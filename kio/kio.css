@@ -13,6 +13,46 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
 }
 
+/* 스마트폰 프레임 */
+.phone-wrapper {
+  width: 432px;    
+  height: 932px;  
+  margin: 0 auto;
+
+  overflow: hidden;      /* 절대 바깥으로 못 튀어나오게 */
+  position: relative;
+
+  border-radius: 20px;
+  background: #000;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 💥 실제 키오스크 전체 (1080x1920 원본 유지 + 축소) */
+.kiosk {
+  width: 1080px;
+  height: 1920px;
+
+  transform: scale(0.40);
+  transform-origin: top left;
+
+  overflow-y: scroll;   /* 세로 스크롤 */
+  overflow-x: hidden;   /* 가로 넘침 차단 */
+
+  background: white;
+}
+
+/* 스크롤바 스타일 */
+.kiosk::-webkit-scrollbar {
+  width: 6px;
+}
+.kiosk::-webkit-scrollbar-thumb {
+  background: #777;
+  border-radius: 6px;
+}
+
 /* 상단 */
 .top-bar {
   background: var(--gongcha-red);
@@ -51,13 +91,11 @@ body {
   cursor: pointer;
 }
 
-/* 메인 영역 레이아웃 */
+/* 메인 */
 .content {
-  flex: 1;
   display: flex;
   gap: 20px;
   padding: 20px;
-  height: calc(100% - 350px);
   box-sizing: border-box;
 }
 
@@ -119,9 +157,8 @@ body {
 }
 
 .cart h3 {
-  margin-top: 0;
   font-size: 26px;
-  margin-bottom: 15px;
+  margin: 0 0 15px;
 }
 
 .delete-all {
@@ -180,43 +217,4 @@ body {
 .next-btn {
   background: #ff8a65;
   color: white;
-}
-
-/* 스마트폰 프레임 */
-.phone-wrapper {
-  width: 432px;
-  height: 932px;
-  margin: 0 auto;
-
-  overflow: hidden;  /* 외부 튀어나감 방지 */
-  position: relative;
-
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.6);
-}
-
-/* 키오스크 전체 축소 + 내부 스크롤 */
-.kiosk {
-  width: 1080px;
-  height: 1920px;
-
-  transform: scale(0.40);
-  transform-origin: top left;
-
-  overflow-y: scroll;   /* 스크롤은 여기만 */
-  overflow-x: hidden;
-
-  background: #fff;
-}
-
-/* 스크롤바 */
-.kiosk::-webkit-scrollbar {
-  width: 6px;
-}
-.kiosk::-webkit-scrollbar-thumb {
-  background: #666;
-  border-radius: 6px;
 }

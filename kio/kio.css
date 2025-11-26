@@ -135,7 +135,7 @@ body {
 
 /* 기존 24px이 이미 있기 때문에! 아래에서 강제로 덮어쓰기 */
 .menu-name {
-  margin-top: 6px;
+  margin-top: 20px;
   font-size: 20px !important;
   line-height: 1.3;
   height: auto;

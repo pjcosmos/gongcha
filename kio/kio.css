@@ -192,6 +192,24 @@ body {
   color: white;
 }
 
+/* 스마트폰 화면 비율로 보여주기 */
+.phone-wrapper {
+  width: 430px;            /* iPhone 14 Pro 기준 모바일 폭 */
+  height: 932px;           /* iPhone 비율 */
+  margin: 0 auto;
+  background: #000;
+  overflow-y: scroll;      /* 세로 스크롤 필요 */
+  border: 1px solid #333;
+  border-radius: 20px;     /* 폰처럼 둥글게 */
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+/* 내부 kiosk는 wrapper 안에서 100% 채우기 */
+.kiosk {
+  width: 100%;
+  height: auto;            /* 내용만큼 길어지게 */
+}
+
 .order-btn {
   background: var(--gongcha-red);
   color: white;

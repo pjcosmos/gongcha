@@ -203,14 +203,3 @@ body {
   border-radius: 20px;     /* 폰처럼 둥글게 */
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
-
-/* 내부 kiosk는 wrapper 안에서 100% 채우기 */
-.kiosk {
-  width: 100%;
-  height: auto;            /* 내용만큼 길어지게 */
-}
-
-.order-btn {
-  background: var(--gongcha-red);
-  color: white;
-}

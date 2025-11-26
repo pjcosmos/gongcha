@@ -19,7 +19,7 @@ body {
   height: 932px;  
   margin: 0 auto;
 
-  overflow: hidden;      /* 절대 바깥으로 못 튀어나오게 */
+  overflow: hidden;     
   position: relative;
 
   border-radius: 20px;
@@ -30,7 +30,7 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* 💥 실제 키오스크 전체 (1080x1920 원본 유지 + 축소) */
+/* 실제 키오스크 (1080x1920 + 축소) */
 .kiosk {
   width: 1080px;
   height: 1920px;
@@ -38,8 +38,8 @@ body {
   transform: scale(0.40);
   transform-origin: top left;
 
-  overflow-y: scroll;   /* 세로 스크롤 */
-  overflow-x: hidden;   /* 가로 넘침 차단 */
+  overflow-y: scroll;   
+  overflow-x: hidden;   
 
   background: white;
 }
@@ -116,12 +116,12 @@ body {
   text-align: center;
 }
 
+/* 메뉴 사진 제거 */
 .menu-card img {
-  width: 100%;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  display: none;
 }
 
+/* NEW 태그 */
 .menu-tag {
   position: absolute;
   top: 10px;
@@ -133,11 +133,12 @@ body {
   font-size: 16px;
 }
 
+/* 기존 24px이 이미 있기 때문에! 아래에서 강제로 덮어쓰기 */
 .menu-name {
-  margin-top: 12px;
-  font-size: 24px;
+  margin-top: 6px;
+  font-size: 13px !important;
   line-height: 1.3;
-  height: 60px;
+  height: auto;
 }
 
 .menu-price {
@@ -217,17 +218,4 @@ body {
 .next-btn {
   background: #ff8a65;
   color: white;
-}
-
-/* 메뉴 사진 제거 */
-.menu-card img {
-  display: none;
-}
-
-/* 메뉴 이름 글씨 13px */
-.menu-name {
-  margin-top: 6px;
-  font-size: 13px;
-  line-height: 1.3;
-  height: auto;
 }

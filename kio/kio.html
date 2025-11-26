@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>공차 키오스크</title>
+  <link rel="stylesheet" href="gongcha.css" />
+</head>
+<body>
+  <div class="kiosk">
+
+    <!-- 상단 카테고리 안내 영역 -->
+    <div class="top-bar">
+      <div class="left-msg">주문하실 메뉴를 클릭해 주세요.</div>
+      <button class="home-btn">시작화면</button>
+    </div>
+
+    <!-- 카테고리 탭 -->
+    <div class="category-bar">
+      <button>펄&밀크폼</button>
+      <button>NEW&EVENT</button>
+      <button>베스트셀러</button>
+      <button>밀크티</button>
+      <button>스무디</button>
+      <button>요거트/비티</button>
+      <button>프롯티&오이</button>
+      <button>베이커리&스낵</button>
+      <button>병음료/MD상품</button>
+      <button>세트메뉴</button>
+      <button>오더제한 메뉴</button>
+    </div>
+
+    <!-- 메인 컨텐츠 -->
+    <div class="content">
+
+      <!-- 메뉴 리스트 3열 -->
+      <div class="menu-grid">
+        <!-- 샘플 메뉴 카드 -->
+        <div class="menu-card">
+          <div class="menu-tag">NEW</div>
+          <img src="img/menu-sample.png" alt="" />
+          <div class="menu-name">오리지널 밀크티 + 펄</div>
+          <div class="menu-price">6,800원</div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-tag">NEW</div>
+          <img src="img/menu-sample.png" alt="" />
+          <div class="menu-name">밀크티 + 흑당 펄</div>
+          <div class="menu-price">7,000원</div>
+        </div>
+
+        <!-- 필요한 만큼 계속 넣기 -->
+      </div>
+
+      <!-- 우측 장바구니 -->
+      <aside class="cart">
+        <h3>🛒 장바구니</h3>
+        <button class="delete-all">전체삭제</button>
+
+        <div class="cart-list">
+          <!-- 6칸 비어있는 슬롯 -->
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+        </div>
+
+        <div class="cart-bottom">
+          <div>0개</div>
+          <div>0원</div>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- 하단 버튼 -->
+    <div class="bottom-bar">
+      <button class="prev-btn">이전</button>
+      <button class="next-btn">다음</button>
+      <button class="order-btn">주문하기</button>
+    </div>
+
+  </div>
+</body>
+</html>

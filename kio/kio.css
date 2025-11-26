@@ -8,8 +8,9 @@
 
 /* 전체 */
 body {
-  background: none; 
-}
+  margin: 0;
+  background: #ffffff;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 /* 상단 */
@@ -190,7 +191,6 @@ body {
   padding-top: env(safe-area-inset-top);   /* 아이폰 노치 대응 */
   padding-bottom: env(safe-area-inset-bottom);
   overflow-y: auto;         /* 스크롤 가능 */
-  background: #000;
   position: relative;
   border-radius: 20px;      /* Optional : 스마트폰 느낌 */
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
@@ -212,4 +212,11 @@ body {
 .phone-wrapper::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 6px;
+}
+
+.kiosk-container {
+  width: 432px;   /* scale된 kiosk가 보이는 실제 크기 */
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

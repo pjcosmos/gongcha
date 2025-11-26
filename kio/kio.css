@@ -8,9 +8,8 @@
 
 /* 전체 */
 body {
-  background: #000;
-  margin: 0;
-  font-family: 'Noto Sans KR', sans-serif;
+  background: none; 
+}
 }
 
 /* 상단 */
@@ -187,6 +186,9 @@ body {
   width: 432px;             /* scale(0.40) 기준 1080 → 432 */
   height: 932px;            /* 아이폰 14 기준 세로 */
   margin: 0 auto;
+  overflow-x: hidden;        /* 좌우 튀어나오는 것 방지 */
+  padding-top: env(safe-area-inset-top);   /* 아이폰 노치 대응 */
+  padding-bottom: env(safe-area-inset-bottom);
   overflow-y: auto;         /* 스크롤 가능 */
   background: #000;
   position: relative;

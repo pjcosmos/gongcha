@@ -190,7 +190,7 @@ body {
   overflow-x: hidden;        /* 좌우 튀어나오는 것 방지 */
   padding-top: env(safe-area-inset-top);   /* 아이폰 노치 대응 */
   padding-bottom: env(safe-area-inset-bottom);
-  overflow-y: auto;         /* 스크롤 가능 */
+  overflow-y: hidden;         /* 스크롤 가능 */
   position: relative;
   border-radius: 20px;      /* Optional : 스마트폰 느낌 */
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
@@ -203,6 +203,9 @@ body {
   transform: scale(0.40);   /* 💥 전체 축소 */
   transform-origin: top left;
   position: relative;
+
+  overflow-y: scroll;  /* 🔥 키오스크 내부 스크롤 */
+  overflow-x: hidden;
 }
 
 /* 스크롤 부드럽게 */

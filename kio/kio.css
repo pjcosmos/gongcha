@@ -184,42 +184,39 @@ body {
 
 /* 스마트폰 프레임 */
 .phone-wrapper {
-  width: 432px;             /* scale(0.40) 기준 1080 → 432 */
-  height: 932px;            /* 아이폰 14 기준 세로 */
+  width: 432px;
+  height: 932px;
   margin: 0 auto;
-  overflow-x: hidden;        /* 좌우 튀어나오는 것 방지 */
-  padding-top: env(safe-area-inset-top);   /* 아이폰 노치 대응 */
-  padding-bottom: env(safe-area-inset-bottom);
-  overflow-y: hidden;         /* 스크롤 가능 */
+
+  overflow: hidden;  /* 외부 튀어나감 방지 */
   position: relative;
-  border-radius: 20px;      /* Optional : 스마트폰 느낌 */
+
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+
+  border-radius: 20px;
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
 
-/* kiosk를 그대로 축소해서 보여줌 */
+/* 키오스크 전체 축소 + 내부 스크롤 */
 .kiosk {
-  width: 1080px;            /* 원본 해상도 유지 */
-  height: 1920px;           /* 원본 해상도 유지 */
-  transform: scale(0.40);   /* 💥 전체 축소 */
-  transform-origin: top left;
-  position: relative;
+  width: 1080px;
+  height: 1920px;
 
-  overflow-y: scroll;  /* 🔥 키오스크 내부 스크롤 */
+  transform: scale(0.40);
+  transform-origin: top left;
+
+  overflow-y: scroll;   /* 스크롤은 여기만 */
   overflow-x: hidden;
+
+  background: #fff;
 }
 
-/* 스크롤 부드럽게 */
-.phone-wrapper::-webkit-scrollbar {
+/* 스크롤바 */
+.kiosk::-webkit-scrollbar {
   width: 6px;
 }
-.phone-wrapper::-webkit-scrollbar-thumb {
-  background: #333;
+.kiosk::-webkit-scrollbar-thumb {
+  background: #666;
   border-radius: 6px;
-}
-
-.kiosk-container {
-  width: 432px;   /* scale된 kiosk가 보이는 실제 크기 */
-  height: auto;
-  overflow-y: auto;
-  overflow-x: hidden;
 }

@@ -13,16 +13,6 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
 }
 
-.kiosk {
-  width: 1080px;
-  height: 1920px;
-  background: white;
-  margin: auto;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
 /* 상단 */
 .top-bar {
   background: var(--gongcha-red);
@@ -192,14 +182,32 @@ body {
   color: white;
 }
 
-/* 스마트폰 화면 비율로 보여주기 */
+/* 스마트폰 프레임 */
 .phone-wrapper {
-  width: 430px;            /* iPhone 14 Pro 기준 모바일 폭 */
-  height: 932px;           /* iPhone 비율 */
+  width: 432px;             /* scale(0.40) 기준 1080 → 432 */
+  height: 932px;            /* 아이폰 14 기준 세로 */
   margin: 0 auto;
+  overflow-y: auto;         /* 스크롤 가능 */
   background: #000;
-  overflow-y: scroll;      /* 세로 스크롤 필요 */
-  border: 1px solid #333;
-  border-radius: 20px;     /* 폰처럼 둥글게 */
+  position: relative;
+  border-radius: 20px;      /* Optional : 스마트폰 느낌 */
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+/* kiosk를 그대로 축소해서 보여줌 */
+.kiosk {
+  width: 1080px;            /* 원본 해상도 유지 */
+  height: 1920px;           /* 원본 해상도 유지 */
+  transform: scale(0.40);   /* 💥 전체 축소 */
+  transform-origin: top left;
+  position: relative;
+}
+
+/* 스크롤 부드럽게 */
+.phone-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+.phone-wrapper::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 6px;
 }

@@ -1,165 +1,161 @@
+/* 공차 공식 색상 */
+:root {
+  --gongcha-red: #c9282d;
+  --gongcha-light: #fff3f3;
+  --gongcha-tag: #e53e3e;
+  --border-gray: #d9d9d9;
+}
+
+/* 전체 */
 body {
+  background: #000;
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .kiosk {
   width: 1080px;
-  margin: auto;
-  border: 1px solid #ccc;
   height: 1920px;
-  display: flex;
-  flex-direction: column;
+  background: white;
+  margin: auto;
+  overflow: hidden;
 }
 
 /* 상단 */
 .top-bar {
-  background: #c72828;
+  background: var(--gongcha-red);
   color: white;
-  padding: 20px;
+  font-size: 32px;
+  padding: 25px 30px;
   display: flex;
   justify-content: space-between;
-  font-size: 24px;
 }
 
 .home-btn {
-  background: #b71c1c;
+  background: #a41f23;
   color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 20px;
+  padding: 10px 25px;
+  font-size: 26px;
 }
 
 /* 카테고리 */
 .category-bar {
-  background: #fff4f4;
-  padding: 10px;
+  background: var(--gongcha-light);
+  padding: 15px 20px;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-row-gap: 10px;
+  grid-template-columns: repeat(6,1fr);
+  gap: 10px;
 }
 
 .category-bar button {
-  border: none;
+  font-size: 22px;
   background: white;
-  padding: 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 18px;
-  border: 1px solid #ddd;
-}
-
-/* Content 2단 구조 */
-.content {
-  flex: 1;
-  display: flex;
-  gap: 20px;
-  padding: 20px;
+  border: 1px solid var(--border-gray);
+  padding: 15px 0;
+  border-radius: 8px;
 }
 
 /* 메뉴 3열 */
 .menu-grid {
-  flex: 3;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+  padding: 20px;
 }
 
 .menu-card {
-  border: 1px solid #ddd;
-  padding: 10px;
-  background: white;
-  border-radius: 10px;
-  text-align: center;
+  border: 1px solid var(--border-gray);
+  border-radius: 12px;
   position: relative;
+  padding-bottom: 15px;
+  text-align: center;
 }
 
 .menu-card img {
   width: 100%;
-  border-radius: 10px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .menu-tag {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: red;
+  background: var(--gongcha-tag);
   color: white;
-  padding: 4px 8px;
-  border-radius: 5px;
-  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 16px;
 }
 
 .menu-name {
-  margin-top: 10px;
-  font-size: 20px;
+  margin-top: 12px;
+  font-size: 24px;
+  height: 60px;
 }
 
 .menu-price {
-  font-size: 22px;
-  margin-top: 4px;
-  font-weight: bold;
+  font-size: 26px;
+  color: #333;
+  font-weight: 700;
 }
 
 /* 장바구니 */
 .cart {
-  flex: 1;
-  background: #fff;
+  width: 300px;
   border-left: 2px solid #ddd;
   padding: 20px;
 }
 
-.cart h3 {
-  margin-top: 0;
-}
-
 .delete-all {
   width: 100%;
-  padding: 10px;
-  background: #e64a19;
+  background: var(--gongcha-red);
   color: white;
   border: none;
+  padding: 12px;
   margin-bottom: 20px;
+  font-size: 22px;
 }
 
-.cart-list .slot {
+.slot {
   height: 90px;
-  border: 1px dashed #bbb;
+  border: 1px dashed var(--border-gray);
   margin-bottom: 10px;
   border-radius: 8px;
 }
 
 .cart-bottom {
   margin-top: 20px;
-  font-size: 22px;
+  font-size: 26px;
   display: flex;
   justify-content: space-between;
 }
 
 /* 하단 버튼 */
 .bottom-bar {
+  padding: 20px;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
 }
 
 .bottom-bar button {
+  font-size: 26px;
   padding: 20px 40px;
-  font-size: 24px;
-  border: none;
   border-radius: 12px;
+  border: none;
 }
 
 .prev-btn {
-  background: #ddd;
+  background: #dcdcdc;
 }
 
 .next-btn {
-  background: #ff7043;
+  background: #ff8a65;
   color: white;
 }
 
 .order-btn {
-  background: #c62828;
+  background: var(--gongcha-red);
   color: white;
 }

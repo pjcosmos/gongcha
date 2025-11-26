@@ -218,3 +218,16 @@ body {
   background: #ff8a65;
   color: white;
 }
+
+/* 메뉴 사진 제거 */
+.menu-card img {
+  display: none;
+}
+
+/* 메뉴 이름 글씨 13px */
+.menu-name {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.3;
+  height: auto;
+}

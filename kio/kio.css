@@ -348,3 +348,90 @@ body {
   color: white;
   border-color: var(--gongcha-red);
 }
+
+/* =============================
+   결제 페이지 (전체 화면 전환)
+============================= */
+
+.pay-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: white;
+  z-index: 200;    /* 옵션 팝업보다 위 */
+
+  display: none;  /* 처음에는 숨김 */
+
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.pay-title {
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.pay-info-box {
+  width: 90%;
+  margin: 0 auto;
+
+  border: 2px solid #ddd;
+  border-radius: 18px;
+  padding: 20px;
+
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.pay-methods {
+  width: 90%;
+  margin: 25px auto;
+  display: grid;
+  gap: 15px;
+}
+
+.pay-methods button {
+  width: 100%;
+  padding: 18px;
+  font-size: 20px;
+
+  border-radius: 14px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  cursor: pointer;
+}
+
+.pay-bottom {
+  position: absolute;
+  bottom: 20px;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 15px;
+}
+
+.pay-bottom button {
+  flex: 1;
+  padding: 18px;
+  font-size: 20px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.pay-cancel {
+  background: #ccc;
+}
+
+.pay-confirm {
+  background: #ff8c69;
+  color: white;
+}

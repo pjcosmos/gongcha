@@ -143,6 +143,75 @@
     </div>
   </div>
 
+    <!-- ======================
+     ① 주문 내역 확인 화면
+====================== -->
+<div id="confirmScreen" class="confirm-screen">
+
+  <h2 class="confirm-title">주문 내역 확인</h2>
+  <p class="confirm-sub">주문 정보를 확인해 주세요.</p>
+
+  <table class="confirm-table">
+    <thead>
+      <tr>
+        <th>상품명</th>
+        <th>수량</th>
+        <th>가격</th>
+      </tr>
+    </thead>
+    <tbody id="confirmTableBody"></tbody>
+  </table>
+
+  <div class="confirm-total-box">
+    총 수량 <span id="confirmTotalCount">0</span>개
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    주문금액 <span id="confirmTotalPrice">0원</span>
+  </div>
+
+  <div class="confirm-buttons">
+    <button id="confirmPrev" class="btn-gray">이전 단계</button>
+    <button id="confirmNext" class="btn-red">다음 단계</button>
+  </div>
+
+</div>
+
+
+<!-- ======================
+     ② 결제 화면
+====================== -->
+<div id="payScreen" class="pay-screen">
+
+  <h2 class="pay-title">결제하기</h2>
+
+  <div class="pay-section">
+    <h3>멤버십/모바일 교환권</h3>
+    <div class="pay-method-box">
+      <button>공차 카드</button>
+      <button>멤버십 쿠폰</button>
+      <button>모바일 교환권</button>
+    </div>
+  </div>
+
+  <div class="pay-section">
+    <h3>결제 방법</h3>
+    <div class="pay-method-box">
+      <button data-pay="카드결제">신용 카드</button>
+      <button data-pay="카카오페이">카카오페이</button>
+      <button data-pay="삼성페이">삼성페이</button>
+      <button data-pay="현금">현금 결제</button>
+    </div>
+  </div>
+
+  <div class="pay-total">
+    총 결제 금액 <b id="payFinalPrice">0원</b>
+  </div>
+
+  <div class="confirm-buttons">
+    <button id="payPrev" class="btn-gray">이전 단계</button>
+  </div>
+
+</div>
+
   </div> <!-- kiosk 끝 -->
 
 </div> <!-- phone-frame 끝 -->

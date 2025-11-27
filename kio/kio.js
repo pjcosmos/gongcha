@@ -99,3 +99,114 @@ document.querySelectorAll(".category-bar button").forEach(btn => {
 
 // 첫 화면 기본: 밀크티
 renderMenu("밀크티");
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const modal = document.getElementById("optionModal");
+  const btnCancel = document.getElementById("btnCancel");
+  const btnAddCart = document.getElementById("btnAddCart");
+
+  let currentMenu = { name: "", price: 0 };
+
+  // 메뉴 클릭 시 팝업 띄우기
+  document.querySelectorAll(".menu-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const name = card.querySelector(".name").innerText;
+      const price = Number(card.querySelector(".price").innerText.replace("원", "").replace(",", ""));
+
+      currentMenu = { name, price };
+
+      document.getElementById("optMenuName").innerText = name;
+      document.getElementById("optMenuPrice").innerText = price.toLocaleString() + "원";
+
+      resetOptions();
+      modal.style.display = "flex";
+    });
+  });
+
+  // 옵션 버튼 선택 토글
+  function setSelectable(groupId) {
+    document.querySelectorAll(`#${groupId} button`).forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(`#${groupId} button`).forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+      });
+    });
+  }
+
+  setSelectable("optCup");
+  setSelectable("optTemp");
+  setSelectable("optSugar");
+  setSelectable("optIce");
+  setSelectable("optTopping");
+
+  function resetOptions() {
+    document.querySelectorAll(".opt-buttons button")
+      .forEach(btn => btn.classList.remove("selected"));
+  }
+
+  // 취소 버튼
+  btnCancel.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // 장바구니 담기
+  btnAddCart.addEventListener("click", () => {
+
+    const cup = getSelected("optCup");
+    const temp = getSelected("optTemp");
+    const sugar = getSelected("optSugar");
+    const ice = getSelected("optIce");
+    const topping = getSelected("optTopping");
+
+    const optionText = `${cup} / ${temp} / 당도 ${sugar} / 얼음 ${ice} / ${topping}`;
+
+    addToCartWithOption(currentMenu.name, currentMenu.price, optionText);
+
+    modal.style.display = "none";
+  });
+
+  function getSelected(id) {
+    const sel = document.querySelector(`#${id} button.selected`);
+    return sel ? sel.dataset.value : "-";
+  }
+
+  // 기존 cart에 옵션 추가 버전
+  function addToCartWithOption(name, price, options) {
+    if (cart.length >= 6) return;
+    cart.push({ name, price, options });
+    renderCart();
+  }
+
+  // 기존 renderCart 개선
+  function renderCart() {
+    cartList.innerHTML = "";
+
+    cart.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "slot";
+      div.style.display = "flex";
+      div.style.flexDirection = "column";
+      div.style.justifyContent = "center";
+      div.style.padding = "6px";
+      div.style.fontSize = "15px";
+      div.innerHTML = `
+        <div style="font-weight:700;">${item.name}</div>
+        <div>${item.options}</div>
+        <div>${item.price.toLocaleString()}원</div>
+      `;
+      cartList.appendChild(div);
+    });
+
+    for (let i = cart.length; i < 6; i++) {
+      cartList.appendChild(Object.assign(document.createElement("div"), { className: "slot" }));
+    }
+
+    countBox.innerText = `${cart.length}개`;
+    priceBox.innerText = `${cart.reduce((a,b)=>a+b.price, 0).toLocaleString()}원`;
+  }
+
+});
+</script>

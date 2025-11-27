@@ -29,9 +29,9 @@ body {
   background: white;
   border-radius: 30px;
   overflow: hidden;
-  position: relative;
   display: flex;
   flex-direction: column;
+  position: relative;   /* ← 반드시 추가해야 함 */
 }
 
 /* 상단 */

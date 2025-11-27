@@ -86,58 +86,54 @@ body {
   cursor: pointer;
 }
 
-/* 메인 컨텐츠 영역 – 여기만 스크롤 */
+/* 메인 – 메뉴랑 장바구니 영역 */
 .content {
-  flex: 1;
   display: flex;
-  gap: 10px;
-  padding: 10px;
+  gap: 20px;
+  padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto;
+  align-items: flex-start;   /* 위에 딱 붙게 */
 }
 
-/* 메뉴 그리드 (큰 글씨 + 큰 터치영역) */
+/* 메뉴 영역 – 4열 그리드, 내용 높이만큼만 */
 .menu-grid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);  /* 폰에서는 2열로 크게 */
-  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);  /* 4열 */
+  gap: 16px;
+  align-content: flex-start;
 }
 
-/* 메뉴 카드 – 높이 줄인 버전 */
+/* 메뉴 카드 – 세로로 길게 안 늘어나게 */
 .menu-card {
   border: 1px solid var(--border-gray);
   border-radius: 12px;
   background: #fff;
-  padding: 6px 4px;      /* 위아래 여백 줄임 */
+  padding: 8px 6px;
   text-align: center;
   box-sizing: border-box;
-  /* min-height, flex 관련 속성 전부 제거해서
-     글+가격까지만 딱 차지하게 */
+
+  height: auto;          /* 🔥 고정 높이/늘어남 방지 */
+  min-height: 0;
 }
 
-/* 사진은 일단 숨김 (텍스트만) */
+/* 메뉴 사진은 계속 안 보이게 */
 .menu-card img {
   display: none;
 }
 
-/* NEW 태그 (원하면 나중에 켜고/끄고) */
-.menu-tag {
-  display: none;
-}
-
-/* 메뉴 이름 – 빨간색, 20px, 가운데 정렬 */
+/* 메뉴 이름 – 빨간색, 20px */
 .menu-name {
-  color: var(--gongcha-red);
+  margin: 4px 0 2px;
   font-size: 20px;
   font-weight: 700;
-  line-height: 1.4;
-  text-align: center;
+  color: var(--gongcha-red);
+  line-height: 1.3;
 }
 
-/* 가격 – 검정, 20px, 볼드, 아래쪽 여유 */
+/* 가격 – 가운데 정렬, 검정 볼드 20px */
 .menu-price {
-  margin-top: 4px;
+  margin-bottom: 2px;
   font-size: 20px;
   font-weight: 700;
   color: #000;

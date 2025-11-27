@@ -38,10 +38,7 @@
         <h3>🛒 장바구니</h3>
         <button class="delete-all">전체삭제</button>
 
-        <div class="cart-list" id="cartList">
-          <div class="slot"></div><div class="slot"></div><div class="slot"></div>
-          <div class="slot"></div><div class="slot"></div><div class="slot"></div>
-        </div>
+        <div class="cart-list" id="cartList"></div>
 
         <div class="cart-bottom">
           <div id="cartCount">0개</div>
@@ -64,16 +61,13 @@
 
 <script src="kio.js"></script>
 
-<!-- ===========================
-        옵션 선택 팝업
-=========================== -->
+<!-- 옵션 팝업 -->
 <div id="optionModal" class="modal">
   <div class="modal-content">
 
     <h2 id="optMenuName">메뉴 이름</h2>
     <h3 id="optMenuPrice">0원</h3>
 
-    <!-- 컵 선택 -->
     <div class="opt-group">
       <div class="opt-title">컵 종류</div>
       <div class="opt-buttons" id="optCup">
@@ -82,7 +76,6 @@
       </div>
     </div>
 
-    <!-- 온도 선택 -->
     <div class="opt-group">
       <div class="opt-title">온도</div>
       <div class="opt-buttons" id="optTemp">
@@ -91,7 +84,6 @@
       </div>
     </div>
 
-    <!-- 당도 -->
     <div class="opt-group">
       <div class="opt-title">당도</div>
       <div class="opt-buttons" id="optSugar">
@@ -103,7 +95,6 @@
       </div>
     </div>
 
-    <!-- 얼음량 -->
     <div class="opt-group">
       <div class="opt-title">얼음량</div>
       <div class="opt-buttons" id="optIce">
@@ -114,7 +105,6 @@
       </div>
     </div>
 
-    <!-- 토핑 선택 -->
     <div class="opt-group">
       <div class="opt-title">토핑</div>
       <div class="opt-buttons" id="optTopping">
@@ -125,7 +115,6 @@
       </div>
     </div>
 
-    <!-- 버튼 -->
     <div class="modal-buttons">
       <button id="btnCancel">취소</button>
       <button id="btnAddCart">장바구니 담기</button>
@@ -133,6 +122,6 @@
 
   </div>
 </div>
-  
+
 </body>
 </html>

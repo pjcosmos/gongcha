@@ -212,3 +212,19 @@ body {
 .prev-btn { background: #ddd; }
 .next-btn { background: #ff8c69; color: white; }
 .order-btn { background: #333; color: white; }
+
+.menu-grid {
+  grid-auto-rows: min-content !important;
+}
+
+.menu-card {
+  height: auto !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.menu-card .name,
+.menu-card .price {
+  margin: 0;
+}

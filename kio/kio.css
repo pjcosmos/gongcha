@@ -89,7 +89,6 @@ body {
   box-sizing: border-box;
 }
 
-/* 메뉴 2열 */
 .menu-grid {
   flex: 1;
   display: grid;
@@ -97,6 +96,8 @@ body {
   gap: 12px;
   overflow-y: auto;
   padding-right: 5px;
+  grid-auto-rows: auto;   /* 유령 빈칸 제거 */
+
 }
 
 .menu-card {

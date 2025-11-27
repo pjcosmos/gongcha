@@ -124,6 +124,32 @@
         </div>
 
       </div>
+
+      <!-- 결제 선택 팝업 -->
+<div id="payModal" class="pay-modal">
+  <div class="pay-box">
+    <h2>결제 방식을 선택해주세요</h2>
+    
+    <div class="pay-option">
+      <button data-pay="카드결제">카드 결제</button>
+      <button data-pay="삼성페이">삼성페이</button>
+      <button data-pay="간편결제">간편결제</button>
+      <button data-pay="현금결제">현금 결제</button>
+    </div>
+
+    <div style="margin-top:20px;">
+      <button id="payCloseBtn" style="
+        padding:12px 20px; 
+        border:none;
+        background:#bbb;
+        color:white;
+        border-radius:10px;
+        font-size:18px;
+      ">닫기</button>
+    </div>
+  </div>
+</div>
+      
     </div>
     <!-- 팝업 끝 -->
 

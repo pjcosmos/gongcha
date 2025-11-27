@@ -1,7 +1,3 @@
-/* ===============================
-    공차 키오스크 전체 CSS (완성본)
-=============================== */
-
 /* 공차 공식 색상 */
 :root {
   --gongcha-red: #c9282d;
@@ -9,7 +5,6 @@
   --border-gray: #d9d9d9;
 }
 
-/* 기본 설정 */
 body {
   margin: 0;
   background: #eaeaea;
@@ -26,23 +21,20 @@ body {
   padding: 20px;
   box-shadow: 0 0 25px rgba(0,0,0,0.5);
   overflow: hidden;
-  position: relative;
 }
 
-/* 내부 화면 */
 .kiosk {
   width: 100%;
   height: 100%;
   background: white;
   border-radius: 30px;
   overflow: hidden;
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
-  z-index: 1;
 }
 
-/* 상단 안내 */
+/* 상단 */
 .top {
   background: var(--gongcha-red);
   color: white;
@@ -65,7 +57,7 @@ body {
 
 /* 카테고리 */
 .category-bar {
-  background: var(--gongcha-light);
+  background: #fff3f3;
   padding: 10px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -87,7 +79,7 @@ body {
   font-weight: bold;
 }
 
-/* 콘텐츠 영역 */
+/* 내용 */
 .content {
   flex: 1;
   display: flex;
@@ -118,7 +110,7 @@ body {
 
 .menu-card .name {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
   color: #b82a2a;
 }
 
@@ -129,74 +121,51 @@ body {
   font-size: 20px;
 }
 
-/* 장바구니 전체 */
+/* 장바구니 */
 .cart {
   width: 150px;
   min-width: 150px;
-  border-left: 2px solid #ececec;
+  border-left: 2px solid #ddd;
   padding: 10px;
+  font-size: 18px;
   display: flex;
   flex-direction: column;
-  font-size: 17px;
 }
 
-/* 장바구니 제목 */
 .cart h3 {
-  font-size: 19px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  margin: 0 0 10px;
 }
 
-.cart h3::before {
-  content: "🛒";
-  font-size: 20px;
-}
-
-/* 전체삭제 버튼 */
 .delete-all {
-  width: 100%;
-  background: white;
-  color: var(--gongcha-red);
-  border: 1.5px solid var(--gongcha-red);
-  padding: 7px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.delete-all:hover {
   background: var(--gongcha-red);
   color: white;
+  border: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-/* 장바구니 목록 */
 .cart-list {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .slot {
-  height: 65px;
-  border: 1.5px dashed #dcdcdc;
+  height: 60px;
+  border: 1px dashed #ccc;
   border-radius: 10px;
-  background: #fafafa;
 }
 
 /* 장바구니 하단 */
 .cart-bottom {
-  margin-top: 12px;
   display: flex;
   justify-content: space-between;
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 /* 하단 버튼 */
@@ -221,17 +190,12 @@ body {
 .next-btn { background: #ff8c69; color: white; }
 .order-btn { background: #333; color: white; }
 
-/* ================
-   옵션 팝업
-================ */
-
+/* 옵션 팝업 */
 .modal {
-  position: absolute;  /* kiosk 안에서만 뜸 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;   /* kiosk 높이 */
-  background: rgba(0,0,0,0.45);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.55);
   display: none;
   justify-content: center;
   align-items: center;
@@ -240,24 +204,17 @@ body {
 
 .modal-content {
   width: 85%;
+  max-height: 85%;
+  overflow-y: auto;
+  
   background: white;
   border-radius: 20px;
-  padding: 20px;
+  padding: 25px;
   text-align: center;
-  max-height: 90%;
-  overflow-y: auto;
 }
 
-.opt-group {
-  margin-top: 15px;
-  text-align: left;
-}
-
-.opt-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
+.opt-group { margin-top: 15px; text-align: left; }
+.opt-title { font-size: 18px; font-weight: bold; margin-bottom: 8px; }
 
 .opt-buttons {
   display: grid;
@@ -297,75 +254,17 @@ body {
 #btnCancel { background: #bbb; }
 #btnAddCart { background: #ff6b4a; color: white; }
 
-/* ===========================
-    결제 팝업 (주문하기 버튼)
-=========================== */
-
-.pay-modal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.45);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 60;
-}
-
-.pay-box {
-  width: 85%;
-  background: white;
-  border-radius: 20px;
-  padding: 25px;
-  text-align: center;
-}
-
-.pay-box h2 {
-  font-size: 24px;
-  margin-bottom: 15px;
-}
-
-.pay-option {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.pay-option button {
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid #bbb;
-  font-size: 18px;
-  background: #f8f8f8;
-  cursor: pointer;
-}
-
-.pay-option button:hover {
-  background: var(--gongcha-red);
-  color: white;
-  border-color: var(--gongcha-red);
-}
-
 /* =============================
-   결제 페이지 (전체 화면 전환)
+   결제 화면 (전체 전환)
 ============================= */
 
 .pay-screen {
   position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: white;
-  z-index: 200;    /* 옵션 팝업보다 위 */
-
-  display: none;  /* 처음에는 숨김 */
-
+  z-index: 200;
+  display: none;
   padding: 30px;
   box-sizing: border-box;
 }
@@ -380,11 +279,9 @@ body {
 .pay-info-box {
   width: 90%;
   margin: 0 auto;
-
   border: 2px solid #ddd;
   border-radius: 18px;
   padding: 20px;
-
   font-size: 20px;
   line-height: 1.6;
 }
@@ -400,7 +297,6 @@ body {
   width: 100%;
   padding: 18px;
   font-size: 20px;
-
   border-radius: 14px;
   border: 1px solid #ccc;
   background: #fafafa;
@@ -413,7 +309,6 @@ body {
   width: 90%;
   left: 50%;
   transform: translateX(-50%);
-
   display: flex;
   gap: 15px;
 }
@@ -427,11 +322,5 @@ body {
   cursor: pointer;
 }
 
-.pay-cancel {
-  background: #ccc;
-}
-
-.pay-confirm {
-  background: #ff8c69;
-  color: white;
-}
+.pay-cancel { background: #ccc; }
+.pay-confirm { background: #ff8c69; color: white; }

@@ -1,222 +1,214 @@
-/* 공차 공식 색상 */
+	/* 공차 공식 색상 */
 :root {
   --gongcha-red: #c9282d;
   --gongcha-light: #fff3f3;
   --border-gray: #d9d9d9;
 }
 
-/* 전체 */
 body {
   margin: 0;
-  background: #f5f5f5;
+  background: #eaeaea;
   font-family: 'Noto Sans KR', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
 }
 
-/* 스마트폰 프레임 (아이폰 비율 근접) */
-.phone-wrapper {
-  width: 100%;
-  max-width: 430px;      /* 아이폰 CSS 폭 */
-  height: 100vh;
-  max-height: 932px;     /* 아이폰 CSS 높이 */
-
-  background: #000;
-  border-radius: 28px;
-  padding: 10px;
-  box-sizing: border-box;
-  box-shadow: 0 0 20px rgba(0,0,0,0.6);
-
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
+.phone-frame {
+  width: 430px;
+  height: 900px;
+  margin: 30px auto;
+  background: black;
+  border-radius: 40px;
+  padding: 20px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  overflow: hidden;
 }
 
-/* 실제 키오스크 영역 (폰 안의 화면) */
 .kiosk {
-  background: #ffffff;
-  border-radius: 20px;
   width: 100%;
   height: 100%;
+  background: white;
+  border-radius: 30px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  overflow: hidden;          /* 전체는 넘치지 않게 */
 }
 
-/* 상단 바 */
-.top-bar {
-  background: var(--gongcha-red);
-  color: #fff;
-  font-size: 20px;
-  padding: 14px 16px;
+
+/* -----------------------------
+   상단 안내
+------------------------------ */
+
+.top {
+  background: #c9282d;
+  color: white;
+  padding: 20px;
   display: flex;
+  font-size: 22px;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
 }
 
 .home-btn {
-  background: #a41f23;
-  color: #fff;
+  background: #a01e23;
+  color: white;
   border: none;
-  padding: 6px 14px;
-  font-size: 16px;
-  border-radius: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 17px;
   cursor: pointer;
 }
 
-/* 카테고리 바 */
+
+/* -----------------------------
+   카테고리
+------------------------------ */
+
 .category-bar {
-  background: var(--gongcha-light);
-  padding: 8px 10px;
+  background: #fff3f3;
+  padding: 10px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);   /* 3열 */
-  gap: 6px;
-  box-sizing: border-box;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
 }
 
 .category-bar button {
-  font-size: 14px;
-  background: #fff;
-  border: 1px solid var(--border-gray);
-  padding: 8px 0;
-  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: white;
+  font-size: 16px;
+  padding: 10px 3px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-/* 메인 – 메뉴랑 장바구니 영역 */
-.content {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  box-sizing: border-box;
-  align-items: flex-start;   /* 위에 딱 붙게 */
+.category-bar .active {
+  background: #c9282d;
+  color: white;
+  font-weight: bold;
 }
 
-/* 메뉴 영역 – 4열 그리드, 내용 높이만큼만 */
+
+/* -----------------------------
+   콘텐츠 영역
+------------------------------ */
+
+.content {
+  flex: 1;
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
+
+
+/* -----------------------------
+   메뉴 2열 그리드
+------------------------------ */
+
 .menu-grid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 16px;
-  align-content: flex-start;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  overflow-y: auto;
+  padding-right: 5px;
 }
 
-/* 메뉴 카드 – 세로로 길게 안 늘어나게 */
 .menu-card {
-  border: 1px solid var(--border-gray);
-  border-radius: 12px;
-  background: #fff;
-  padding: 8px 6px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  background: white;
   text-align: center;
-  box-sizing: border-box;
-
-  height: auto;          /* 🔥 고정 높이/늘어남 방지 */
-  min-height: 0;
-}
-
-/* 메뉴 사진은 계속 안 보이게 */
-.menu-card img {
-  display: none;
-}
-
-/* 메뉴 이름 – 빨간색, 20px */
-.menu-name {
-  margin: 4px 0 2px;
+  cursor: pointer;
   font-size: 20px;
-  font-weight: 700;
-  color: var(--gongcha-red);
+}
+
+.menu-card .name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #b82a2a;
   line-height: 1.3;
 }
 
-/* 가격 – 가운데 정렬, 검정 볼드 20px */
-.menu-price {
-  margin-bottom: 2px;
+.menu-card .price {
+  margin-top: 8px;
+  font-weight: bold;
+  color: black;
   font-size: 20px;
-  font-weight: 700;
-  color: #000;
 }
 
-/* 장바구니 */
+
+/* -----------------------------
+   장바구니
+------------------------------ */
+
 .cart {
-  width: 120px;
-  min-width: 120px;
-  border-left: 1px solid #ddd;
-  padding: 8px;
-  background: #fff;
-  box-sizing: border-box;
+  width: 150px;
+  min-width: 150px;
+  border-left: 2px solid #ddd;
+  padding: 10px;
+  font-size: 18px;
   display: flex;
   flex-direction: column;
 }
 
 .cart h3 {
-  font-size: 16px;
-  margin: 0 0 8px;
+  margin: 0 0 10px;
 }
 
 .delete-all {
-  width: 100%;
-  background: var(--gongcha-red);
-  color: #fff;
+  background: #c9282d;
+  color: white;
   border: none;
-  padding: 8px 0;
-  font-size: 14px;
-  border-radius: 6px;
-  margin-bottom: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .cart-list {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
+  flex: 1;
 }
 
 .slot {
-  height: 40px;
-  border: 1px dashed var(--border-gray);
-  border-radius: 6px;
+  height: 60px;
+  border: 1px dashed #ccc;
+  border-radius: 10px;
 }
 
 .cart-bottom {
-  margin-top: 8px;
-  font-size: 14px;
   display: flex;
   justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-/* 하단 버튼 줄 */
+
+/* -----------------------------
+   하단 버튼
+------------------------------ */
+
 .bottom-bar {
-  padding: 8px 10px 12px;
   display: flex;
   justify-content: space-between;
-  background: #fff;
+  padding: 10px;
   border-top: 1px solid #ccc;
-  box-sizing: border-box;
-  gap: 8px;
 }
 
 .bottom-bar button {
   flex: 1;
-  font-size: 16px;
-  padding: 10px 0;
-  border-radius: 10px;
+  margin: 0 5px;
+  padding: 15px;
+  font-size: 20px;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
 }
 
-.prev-btn {
-  background: #dcdcdc;
-}
-
-.next-btn {
-  background: #ff8a65;
-  color: #fff;
-}
-
-.order-btn {
-  background: #f5f5f5;
-}
+.prev-btn { background: #ddd; }
+.next-btn { background: #ff8c69; color: white; }
+.order-btn { background: #333; color: white; }

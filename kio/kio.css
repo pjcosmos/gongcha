@@ -99,7 +99,7 @@ body {
 .menu-grid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);  /* 4열 */
+  grid-template-columns: repeat(2, 1fr); 
   gap: 16px;
   align-content: flex-start;
 }

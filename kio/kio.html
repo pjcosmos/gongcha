@@ -8,133 +8,60 @@
 </head>
 <body>
 
-  <!-- 스마트폰 프레임 -->
-  <div class="phone-wrapper">
-    <!-- 축소된 키오스크 전체 -->
-    <div class="kiosk">
+<div class="phone-frame">
 
-      <!-- 상단 카테고리 안내 영역 -->
-      <div class="top-bar">
-        <div class="left-msg">주문하실 메뉴를 클릭해 주세요.</div>
-        <button class="home-btn">시작화면</button>
-      </div>
+  <div class="kiosk">
 
-      <!-- 카테고리 탭 -->
-      <div class="category-bar">
-        <!-- FELIX PICK 제거, 순서만 맞춰서 버튼 생성 -->
-        <button class="category-btn" data-cat="milktea">밀크티</button>
-        <button class="category-btn" data-cat="smoothie">스무디</button>
-        <button class="category-btn" data-cat="original">오리지널티</button>
-        <button class="category-btn" data-cat="fruit">프룻티&모어</button>
-        <button class="category-btn" data-cat="coffee">커피</button>
-      </div>
+    <!-- 상단 -->
+    <div class="top">
+      <div class="title">주문하실 메뉴를 클릭해 주세요.</div>
+      <button class="home-btn">시작화면</button>
+    </div>
 
-      <!-- 메인 컨텐츠 -->
-      <div class="content">
+    <!-- 카테고리 -->
+    <div class="category-bar">
+      <button data-cat="밀크티" class="active">밀크티</button>
+      <button data-cat="스무디">스무디</button>
+      <button data-cat="오리지널티">오리지널티</button>
+      <button data-cat="프룻티">프룻티&모어</button>
+      <button data-cat="커피">커피</button>
+    </div>
 
-        <!-- 메뉴 4열 그리드 -->
-        <div class="menu-grid" id="menu-grid">
+    <!-- 내용 -->
+    <div class="content">
 
-          <!-- ===== 예시 메뉴 몇 개만 넣어둠 ===== -->
-          <!-- 카테고리별로 data-cat 만 바꾸면서 복사해서 쓰면 됨 -->
+      <!-- 메뉴 리스트 -->
+      <div id="menuGrid" class="menu-grid"></div>
 
-          <!-- NEW & EVENT 예시 -->
-          <div class="menu-card" data-cat="new">
-            <div class="menu-name">로얄 밀크티 팥빙수 쉐이크</div>
-            <div class="menu-price">6,900원</div>
-          </div>
+      <!-- 장바구니 -->
+      <aside class="cart">
+        <h3>🛒 장바구니</h3>
+        <button class="delete-all">전체삭제</button>
 
-          <div class="menu-card" data-cat="new">
-            <div class="menu-name">말차 팥빙수 쉐이크</div>
-            <div class="menu-price">6,900원</div>
-          </div>
-
-          <!-- 밀크티 예시 -->
-          <div class="menu-card" data-cat="milktea">
-            <div class="menu-name">블랙 밀크티</div>
-            <div class="menu-price">4,500원</div>
-          </div>
-
-          <div class="menu-card" data-cat="milktea">
-            <div class="menu-name">타로 밀크티</div>
-            <div class="menu-price">4,500원</div>
-          </div>
-
-          <!-- 스무디 예시 -->
-          <div class="menu-card" data-cat="smoothie">
-            <div class="menu-name">딸기 쿠키 스무디</div>
-            <div class="menu-price">5,700원</div>
-          </div>
-
-          <div class="menu-card" data-cat="smoothie">
-            <div class="menu-name">청귤 요거티 크러쉬</div>
-            <div class="menu-price">6,000원</div>
-          </div>
-
-          <!-- 필요하면 여기서부터 네이버 블로그 메뉴를 카테고리별로 쭉 추가 -->
-
+        <div class="cart-list" id="cartList">
+          <div class="slot"></div><div class="slot"></div><div class="slot"></div>
+          <div class="slot"></div><div class="slot"></div><div class="slot"></div>
         </div>
 
-        <!-- 장바구니 -->
-        <aside class="cart">
-          <h3>🛒 장바구니</h3>
-          <button class="delete-all">전체삭제</button>
-          <div class="cart-list">
-            <div class="slot"></div>
-            <div class="slot"></div>
-            <div class="slot"></div>
-            <div class="slot"></div>
-            <div class="slot"></div>
-            <div class="slot"></div>
-          </div>
-          <div class="cart-bottom">
-            <div>0개</div>
-            <div>0원</div>
-          </div>
-        </aside>
-
-      </div>
-
-      <!-- 하단 버튼 -->
-      <div class="bottom-bar">
-        <button class="prev-btn">이전</button>
-        <button class="next-btn">다음</button>
-        <button class="order-btn">주문하기</button>
-      </div>
+        <div class="cart-bottom">
+          <div id="cartCount">0개</div>
+          <div id="cartTotal">0원</div>
+        </div>
+      </aside>
 
     </div>
+
+    <!-- 하단 버튼 -->
+    <div class="bottom-bar">
+      <button class="prev-btn">이전</button>
+      <button class="next-btn">다음</button>
+      <button class="order-btn">주문하기</button>
+    </div>
+
   </div>
 
-  <!-- 카테고리 필터 JS (심플 버전) -->
-  <script>
-    const catButtons = document.querySelectorAll('.category-btn');
-    const cards = document.querySelectorAll('.menu-card');
+</div>
 
-    function filterMenu(cat) {
-      cards.forEach(card => {
-        const cardCat = card.dataset.cat;
-        if (cat === 'all') {
-          card.style.display = 'block';
-        } else {
-          card.style.display = (cardCat === cat) ? 'block' : 'none';
-        }
-      });
-    }
-
-    catButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // active 버튼 표시
-        catButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const cat = btn.dataset.cat;
-        filterMenu(cat);
-      });
-    });
-
-    // 초기: NEW&EVENT만 보이게
-    filterMenu('new');
-  </script>
-
+<script src="kio.js"></script>
 </body>
 </html>

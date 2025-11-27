@@ -228,3 +228,161 @@ cursor: pointer;
 .menu-card .price {
   margin: 0;
 }
+
+/* ============================
+   옵션 팝업 / 결제 팝업 공통
+============================ */
+.kiosk {
+  position: relative;   /* 팝업이 kiosk 안에 뜨도록 고정 */
+}
+
+/* 팝업 전체 덮는 배경 */
+.modal, .pay-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  overflow-y: auto;
+}
+
+/* 팝업 박스 */
+.modal-content, .pay-box {
+  width: 85%;
+  max-width: 360px;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 옵션 선택 영역 */
+.opt-group {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.opt-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.opt-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.opt-buttons button {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #bbb;
+  background: #f8f8f8;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.opt-buttons button.selected {
+  background: #c9282d;
+  color: white;
+  border-color: #c9282d;
+}
+
+/* 팝업 아래 버튼 */
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 12px;
+  margin: 0 5px;
+  border: none;
+  cursor: pointer;
+}
+
+#btnCancel { background: #bbb; }
+#btnAddCart { background: #ff6b4a; color: white; }
+
+
+/* ============================
+   결제 화면 (전체 전환)
+============================ */
+.pay-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 300;
+  display: none;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.pay-title {
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.pay-info-box {
+  width: 90%;
+  margin: 0 auto;
+  border: 2px solid #ddd;
+  border-radius: 18px;
+  padding: 20px;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.pay-methods {
+  width: 90%;
+  margin: 25px auto;
+  display: grid;
+  gap: 15px;
+}
+
+.pay-methods button {
+  width: 100%;
+  padding: 18px;
+  font-size: 20px;
+  border-radius: 14px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  cursor: pointer;
+}
+
+.pay-bottom {
+  position: absolute;
+  bottom: 20px;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+}
+
+.pay-bottom button {
+  flex: 1;
+  padding: 18px;
+  font-size: 20px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.pay-cancel { background: #ccc; }
+.pay-confirm { background: #ff8c69; color: white; }

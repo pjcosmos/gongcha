@@ -1,3 +1,6 @@
+/* ================================
+   전체 메뉴 데이터
+================================ */
 const MENU = {
   "밀크티": [
     ["브라운슈가 쥬얼리 밀크티", 5500],
@@ -53,6 +56,10 @@ const MENU = {
   ]
 };
 
+
+/* ================================
+   DOM 요소
+================================ */
 let cart = [];
 
 const menuGrid = document.getElementById("menuGrid");
@@ -60,6 +67,16 @@ const cartList = document.getElementById("cartList");
 const cartCount = document.getElementById("cartCount");
 const cartTotal = document.getElementById("cartTotal");
 
+const modal = document.getElementById("optionModal");
+const btnCancel = document.getElementById("btnCancel");
+const btnAdd = document.getElementById("btnAddCart");
+
+let selectedMenu = {};
+
+
+/* ================================
+   메뉴 렌더링
+================================ */
 function renderMenu(category) {
   const items = MENU[category];
   menuGrid.innerHTML = "";
@@ -71,11 +88,14 @@ function renderMenu(category) {
       <div class="name">${name}</div>
       <div class="price">${price.toLocaleString()}원</div>
     `;
-    div.addEventListener("click", () => openOption(name, price));
     menuGrid.appendChild(div);
   });
 }
 
+
+/* ================================
+   카테고리 클릭 이벤트
+================================ */
 document.querySelectorAll(".category-bar button").forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelector(".category-bar .active")?.classList.remove("active");
@@ -84,21 +104,33 @@ document.querySelectorAll(".category-bar button").forEach(btn => {
   });
 });
 
-// 초기 로딩
+
+/* 첫 화면 = 밀크티 */
 renderMenu("밀크티");
 
-/* ------------------------
-    옵션 팝업 관련
--------------------------*/
 
-const modal = document.getElementById("optionModal");
-const btnCancel = document.getElementById("btnCancel");
-const btnAdd = document.getElementById("btnAddCart");
+/* ================================
+   메뉴 클릭 → 옵션 팝업 (이벤트 위임)
+================================ */
+menuGrid.addEventListener("click", (e) => {
+  const card = e.target.closest(".menu-card");
+  if (!card) return;
 
-let selectedMenu = {};
+  const name = card.querySelector(".name").innerText;
+  const price = Number(card
+    .querySelector(".price")
+    .innerText.replace("원","").replace(",",""));
 
+  openOption(name, price);
+});
+
+
+/* ================================
+   옵션 팝업
+================================ */
 function openOption(name, price) {
   selectedMenu = { name, price };
+
   document.getElementById("optMenuName").innerText = name;
   document.getElementById("optMenuPrice").innerText = price.toLocaleString() + "원";
 
@@ -110,12 +142,16 @@ btnCancel.addEventListener("click", () => {
   modal.style.display = "none";
 });
 
+
+/* 옵션 선택 리셋 */
 function resetOptions() {
   document
     .querySelectorAll(".opt-buttons button")
-    .forEach(b => b.classList.remove("selected"));
+    .forEach(btn => btn.classList.remove("selected"));
 }
 
+
+/* 옵션 버튼 클릭 */
 ["optCup","optTemp","optSugar","optIce","optTopping"].forEach(id=>{
   document.querySelectorAll(`#${id} button`).forEach(btn=>{
     btn.addEventListener("click",()=>{
@@ -127,6 +163,10 @@ function resetOptions() {
   });
 });
 
+
+/* ================================
+   장바구니 담기
+================================ */
 btnAdd.addEventListener("click", ()=>{
 
   const cup = getSel("optCup");
@@ -135,27 +175,28 @@ btnAdd.addEventListener("click", ()=>{
   const ice = getSel("optIce");
   const topping = getSel("optTopping");
 
-  const opt = `${cup} / ${temp} / 당도 ${sugar} / 얼음 ${ice} / ${topping}`;
+  const optionText = `${cup} / ${temp} / 당도 ${sugar} / 얼음 ${ice} / ${topping}`;
 
   cart.push({
     name: selectedMenu.name,
     price: selectedMenu.price,
-    opt
+    opt: optionText
   });
 
   renderCart();
-  modal.style.display="none";
+  modal.style.display = "none";
 });
 
+
 function getSel(id){
-  const b = document.querySelector(`#${id} .selected`);
-  return b ? b.dataset.value : "-";
+  const btn = document.querySelector(`#${id} .selected`);
+  return btn ? btn.dataset.value : "-";
 }
 
-/* ------------------------
-    장바구니
--------------------------*/
 
+/* ================================
+   장바구니 렌더링
+================================ */
 function renderCart() {
   cartList.innerHTML = "";
 
@@ -172,16 +213,17 @@ function renderCart() {
       <div style="font-size:14px">${item.opt}</div>
       <div style="font-weight:600">${item.price.toLocaleString()}원</div>
     `;
+
     cartList.appendChild(div);
   });
 
-  // 빈 칸 채우기 (6칸)
+  // 6칸 고정
   for (let i = cart.length; i < 6; i++) {
-    cartList.appendChild(Object.assign(document.createElement("div"), {
-      className: "slot"
-    }));
+    const empty = document.createElement("div");
+    empty.className = "slot";
+    cartList.appendChild(empty);
   }
 
   cartCount.innerText = `${cart.length}개`;
-  cartTotal.innerText = `${cart.reduce((a,b)=>a+b.price, 0).toLocaleString()}원`;
+  cartTotal.innerText = `${cart.reduce((a,b)=>a+b.price,0).toLocaleString()}원`;
 }

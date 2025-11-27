@@ -186,3 +186,31 @@ function renderCart() {
   cartCount.innerText = `${cart.length}개`;
   cartTotal.innerText = `${cart.reduce((a,b)=>a+b.price, 0).toLocaleString()}원`;
 }
+
+/* ===========================
+    주문하기 → 결제 팝업
+=========================== */
+
+const payModal = document.getElementById("payModal");
+const payCloseBtn = document.getElementById("payCloseBtn");
+
+// 주문하기 버튼 클릭 → 팝업 열기
+document.querySelector(".order-btn").addEventListener("click", () => {
+  payModal.style.display = "flex";
+});
+
+// 닫기 버튼
+payCloseBtn.addEventListener("click", () => {
+  payModal.style.display = "none";
+});
+
+// 결제 옵션 버튼 클릭
+document.querySelectorAll(".pay-option button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const type = btn.dataset.pay;
+
+    alert(`👉 ${type} 선택됨! (여기서 결제 페이지 이동 가능)`);
+
+    payModal.style.display = "none";
+  });
+});

@@ -104,18 +104,16 @@ body {
   gap: 10px;
 }
 
-/* 메뉴 카드 */
+/* 메뉴 카드 – 높이 줄인 버전 */
 .menu-card {
   border: 1px solid var(--border-gray);
   border-radius: 12px;
   background: #fff;
-  padding: 10px 8px;
+  padding: 6px 4px;      /* 위아래 여백 줄임 */
   text-align: center;
   box-sizing: border-box;
-  min-height: 110px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  /* min-height, flex 관련 속성 전부 제거해서
+     글+가격까지만 딱 차지하게 */
 }
 
 /* 사진은 일단 숨김 (텍스트만) */

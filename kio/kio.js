@@ -45,19 +45,38 @@ const MENU = {
   ]
 };
 
+
+/* ----------------------------
+      DOM 요소
+----------------------------- */
+
 let cart = [];
 
 const menuGrid = document.getElementById("menuGrid");
 const cartList = document.getElementById("cartList");
 const cartCount = document.getElementById("cartCount");
 const cartTotal = document.getElementById("cartTotal");
-const modal = document.getElementById("optionModal");
 
+const optionModal = document.getElementById("optionModal");
 const btnCancel = document.getElementById("btnCancel");
 const btnAdd = document.getElementById("btnAddCart");
 
+/* 주문확인 모달 */
+const confirmModal = document.getElementById("confirmModal");
+const confirmTableBody = document.getElementById("confirmTableBody");
+const confirmCount = document.getElementById("confirmCount");
+const confirmPrice = document.getElementById("confirmPrice");
+const confirmPrev = document.getElementById("confirmPrev");
+const confirmNext = document.getElementById("confirmNext");
+
+/* 결제 모달 */
+const payModal2 = document.getElementById("payModal2");
+const payPrev = document.getElementById("payPrev");
+const payTotal = document.getElementById("payTotal");
+
+
 /* ----------------------------
-      메뉴 표시
+      메뉴 생성
 ----------------------------- */
 function renderMenu(cat) {
   menuGrid.innerHTML = "";
@@ -73,7 +92,10 @@ function renderMenu(cat) {
   });
 }
 
-/* 카테고리 버튼 */
+/* 첫 로딩 */
+renderMenu("밀크티");
+
+/* 카테고리 */
 document.querySelectorAll(".category-bar button").forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelector(".category-bar .active")?.classList.remove("active");
@@ -82,11 +104,9 @@ document.querySelectorAll(".category-bar button").forEach(btn => {
   });
 });
 
-/* 첫 화면 로드 */
-renderMenu("밀크티");
 
 /* ----------------------------
-      옵션 팝업 열기
+      옵션 선택 팝업 열기
 ----------------------------- */
 
 let selectedMenu = {};
@@ -99,17 +119,17 @@ function openOption(name, price) {
     price.toLocaleString() + "원";
 
   resetOptions();
-  modal.style.display = "flex";
+  optionModal.style.display = "flex";
 }
 
-/* 옵션 리셋 */
+/* 옵션 초기화 */
 function resetOptions() {
   document.querySelectorAll(".opt-buttons button").forEach(b =>
     b.classList.remove("selected")
   );
 }
 
-/* 옵션 선택 */
+/* 옵션 버튼 */
 ["optCup","optTemp","optSugar","optIce","optTopping"].forEach(id=>{
   document.querySelectorAll(`#${id} button`).forEach(btn=>{
     btn.addEventListener("click",()=>{
@@ -119,25 +139,15 @@ function resetOptions() {
   });
 });
 
-/* ----------------------------
-      팝업 닫기
------------------------------ */
+/* 팝업 닫기 */
 btnCancel.addEventListener("click", () => {
-  modal.style.display = "none";
+  optionModal.style.display = "none";
 });
 
-/* ----------------------------
-      선택값 가져오기
------------------------------ */
-function getSel(id) {
-  const b = document.querySelector(`#${id} .selected`);
-  return b ? b.dataset.value : "-";
-}
 
 /* ----------------------------
-      장바구니 담기
+      장바구니 저장
 ----------------------------- */
-
 btnAdd.addEventListener("click", () => {
   const cup = getSel("optCup");
   const temp = getSel("optTemp");
@@ -145,9 +155,7 @@ btnAdd.addEventListener("click", () => {
   const ice = getSel("optIce");
   const topping = getSel("optTopping");
 
-  const optionText =
-    `${cup} / ${temp} / 당도 ${sugar} / 얼음 ${ice}` +
-    (topping !== "-" ? ` / ${topping}` : "");
+  const optionText = `${cup} / ${temp} / 당도 ${sugar} / 얼음 ${ice} / ${topping}`;
 
   cart.push({
     name: selectedMenu.name,
@@ -156,11 +164,18 @@ btnAdd.addEventListener("click", () => {
   });
 
   renderCart();
-  modal.style.display = "none";
+  optionModal.style.display = "none";
 });
 
+/* 선택 옵션 값 가져오기 */
+function getSel(id) {
+  const b = document.querySelector(`#${id} .selected`);
+  return b ? b.dataset.value : "-";
+}
+
+
 /* ----------------------------
-      장바구니 출력
+      장바구니 렌더링
 ----------------------------- */
 function renderCart() {
   cartList.innerHTML = "";
@@ -168,7 +183,6 @@ function renderCart() {
   cart.forEach(item => {
     const div = document.createElement("div");
     div.className = "slot";
-
     div.style.display = "flex";
     div.style.flexDirection = "column";
     div.style.justifyContent = "center";
@@ -192,72 +206,54 @@ function renderCart() {
 }
 
 
-/* ===========================
-      주문확인 화면
-=========================== */
-
-const confirmModal = document.getElementById("confirmModal");
-const confirmBody = document.getElementById("confirmTableBody");
-const confirmCount = document.getElementById("confirmTotalCount");
-const confirmPrice = document.getElementById("confirmTotalPrice");
-
-document.querySelector(".order-btn").addEventListener("click", () => {
-  if (cart.length === 0) return;
-
-  confirmBody.innerHTML = "";
-
-  cart.forEach(item => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${item.name}<br>
-        <span style="font-size:12px;color:#666;">옵션: ${item.opt}</span>
-      </td>
-      <td>1개</td>
-      <td>${item.price.toLocaleString()}원</td>
-    `;
-    confirmBody.appendChild(tr);
-  });
-
-  confirmCount.innerText = cart.length + "개";
-  confirmPrice.innerText =
-    cart.reduce((a,b)=>a+b.price,0).toLocaleString() + "원";
-
-  confirmModal.style.display = "flex";
-});
-
 /* ----------------------------
-    주문확인 → 이전/다음
+      주문하기 → 주문확인 모달 열기
 ----------------------------- */
 
-document.getElementById("confirmPrev").addEventListener("click", () => {
-  confirmModal.style.display = "none";
-});
-
-document.getElementById("confirmNext").addEventListener("click", () => {
-  confirmModal.style.display = "none";
-  payModal.style.display = "flex";
-});
-
-
-/* ===========================
-        결제 화면
-=========================== */
-
-const payModal = document.getElementById("payModal");
-const payCloseBtn = document.getElementById("payCloseBtn");
-
-payCloseBtn.addEventListener("click", () => {
-  payModal.style.display = "none";
-});
-
-document.getElementById("payPrev").addEventListener("click", () => {
-  payModal.style.display = "none";
+document.querySelector(".order-btn").addEventListener("click", () => {
   confirmModal.style.display = "flex";
+
+  confirmTableBody.innerHTML = "";
+
+  let totalCountNum = 0;
+  let totalPriceNum = 0;
+
+  cart.forEach(item => {
+    totalCountNum += 1;
+    totalPriceNum += item.price;
+
+    const tr = document.createElement("tr");
+
+    tr.innerHTML = `
+      <td>${item.name}<br>
+      <span style="font-size:13px;color:#777">옵션: ${item.opt}</span></td>
+      <td style="text-align:center;">1</td>
+      <td style="text-align:right;">${item.price.toLocaleString()}원</td>
+    `;
+
+    confirmTableBody.appendChild(tr);
+  });
+
+  confirmCount.innerText = totalCountNum + "개";
+  confirmPrice.innerText = totalPriceNum.toLocaleString() + "원";
+
+  payTotal.innerText = totalPriceNum.toLocaleString() + "원";
 });
 
-document.querySelectorAll(".pay-option button").forEach(btn => {
-  btn.addEventListener("click", () => {
-    alert(`👉 ${btn.dataset.pay} 선택됨!`);
-    payModal.style.display = "none";
-  });
+
+/* 주문확인 → 이전 */
+confirmPrev.addEventListener("click", () => {
+  confirmModal.style.display = "none";
+});
+
+/* 주문확인 → 다음(결제) */
+confirmNext.addEventListener("click", () => {
+  confirmModal.style.display = "none";
+  payModal2.style.display = "flex";
+});
+
+/* 결제창 → 이전 */
+payPrev.addEventListener("click", () => {
+  payModal2.style.display = "none";
+  confirmModal.style.display = "flex";
 });

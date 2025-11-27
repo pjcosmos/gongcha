@@ -29,11 +29,8 @@
 
     <!-- 내용 -->
     <div class="content">
-
-      <!-- 메뉴 리스트 -->
       <div id="menuGrid" class="menu-grid"></div>
 
-      <!-- 장바구니 -->
       <aside class="cart">
         <h3>🛒 장바구니</h3>
         <button class="delete-all">전체삭제</button>
@@ -45,7 +42,6 @@
           <div id="cartTotal">0원</div>
         </div>
       </aside>
-
     </div>
 
     <!-- 하단 버튼 -->
@@ -55,71 +51,72 @@
       <button class="order-btn">주문하기</button>
     </div>
 
-  </div>
+    <!-- 🌟 옵션 팝업 (kiosk 내부로 이동됨 → 핵심) -->
+    <div id="optionModal" class="modal">
+      <div class="modal-content">
 
-  <!-- 옵션 팝업 -->
-<div id="optionModal" class="modal">
-  <div class="modal-content">
+        <h2 id="optMenuName">메뉴 이름</h2>
+        <h3 id="optMenuPrice">0원</h3>
 
-    <h2 id="optMenuName">메뉴 이름</h2>
-    <h3 id="optMenuPrice">0원</h3>
+        <div class="opt-group">
+          <div class="opt-title">컵 종류</div>
+          <div class="opt-buttons" id="optCup">
+            <button data-value="일회용컵">일회용컵</button>
+            <button data-value="개인컵">개인컵</button>
+          </div>
+        </div>
 
-    <div class="opt-group">
-      <div class="opt-title">컵 종류</div>
-      <div class="opt-buttons" id="optCup">
-        <button data-value="일회용컵">일회용컵</button>
-        <button data-value="개인컵">개인컵</button>
+        <div class="opt-group">
+          <div class="opt-title">온도</div>
+          <div class="opt-buttons" id="optTemp">
+            <button data-value="COLD">COLD</button>
+            <button data-value="HOT">HOT</button>
+          </div>
+        </div>
+
+        <div class="opt-group">
+          <div class="opt-title">당도</div>
+          <div class="opt-buttons" id="optSugar">
+            <button data-value="0%">0%</button>
+            <button data-value="30%">30%</button>
+            <button data-value="50%">50%</button>
+            <button data-value="70%">70%</button>
+            <button data-value="100%">100%</button>
+          </div>
+        </div>
+
+        <div class="opt-group">
+          <div class="opt-title">얼음량</div>
+          <div class="opt-buttons" id="optIce">
+            <button data-value="없음">없음</button>
+            <button data-value="적게">적게</button>
+            <button data-value="보통">보통</button>
+            <button data-value="많이">많이</button>
+          </div>
+        </div>
+
+        <div class="opt-group">
+          <div class="opt-title">토핑</div>
+          <div class="opt-buttons" id="optTopping">
+            <button data-value="펄">펄</button>
+            <button data-value="코코넛">코코넛</button>
+            <button data-value="화이트펄">화이트펄</button>
+            <button data-value="치즈폼">치즈폼</button>
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button id="btnCancel">취소</button>
+          <button id="btnAddCart">장바구니 담기</button>
+        </div>
+
       </div>
     </div>
+    <!-- 팝업 끝 -->
 
-    <div class="opt-group">
-      <div class="opt-title">온도</div>
-      <div class="opt-buttons" id="optTemp">
-        <button data-value="COLD">COLD</button>
-        <button data-value="HOT">HOT</button>
-      </div>
-    </div>
+  </div> <!-- kiosk 끝 -->
 
-    <div class="opt-group">
-      <div class="opt-title">당도</div>
-      <div class="opt-buttons" id="optSugar">
-        <button data-value="0%">0%</button>
-        <button data-value="30%">30%</button>
-        <button data-value="50%">50%</button>
-        <button data-value="70%">70%</button>
-        <button data-value="100%">100%</button>
-      </div>
-    </div>
-
-    <div class="opt-group">
-      <div class="opt-title">얼음량</div>
-      <div class="opt-buttons" id="optIce">
-        <button data-value="없음">없음</button>
-        <button data-value="적게">적게</button>
-        <button data-value="보통">보통</button>
-        <button data-value="많이">많이</button>
-      </div>
-    </div>
-
-    <div class="opt-group">
-      <div class="opt-title">토핑</div>
-      <div class="opt-buttons" id="optTopping">
-        <button data-value="펄">펄</button>
-        <button data-value="코코넛">코코넛</button>
-        <button data-value="화이트펄">화이트펄</button>
-        <button data-value="치즈폼">치즈폼</button>
-      </div>
-    </div>
-
-    <div class="modal-buttons">
-      <button id="btnCancel">취소</button>
-      <button id="btnAddCart">장바구니 담기</button>
-    </div>
-
-  </div>
-</div>
-
-</div>
+</div> <!-- phone-frame 끝 -->
 
 <script src="kio.js"></script>
 

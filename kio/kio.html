@@ -29,8 +29,11 @@
 
     <!-- 내용 -->
     <div class="content">
+
+      <!-- 메뉴 2열 -->
       <div id="menuGrid" class="menu-grid"></div>
 
+      <!-- 장바구니 -->
       <aside class="cart">
         <h3>🛒 장바구니</h3>
         <button class="delete-all">전체삭제</button>
@@ -42,6 +45,7 @@
           <div id="cartTotal">0원</div>
         </div>
       </aside>
+
     </div>
 
     <!-- 하단 버튼 -->
@@ -51,13 +55,17 @@
       <button class="order-btn">주문하기</button>
     </div>
 
-    <!-- 🌟 옵션 팝업 (kiosk 내부로 이동됨 → 핵심) -->
+
+    <!-- ========================
+         옵션 팝업 (kiosk 내부!!)
+    ========================= -->
     <div id="optionModal" class="modal">
       <div class="modal-content">
 
         <h2 id="optMenuName">메뉴 이름</h2>
         <h3 id="optMenuPrice">0원</h3>
 
+        <!-- 컵 종류 -->
         <div class="opt-group">
           <div class="opt-title">컵 종류</div>
           <div class="opt-buttons" id="optCup">
@@ -66,6 +74,7 @@
           </div>
         </div>
 
+        <!-- 온도 -->
         <div class="opt-group">
           <div class="opt-title">온도</div>
           <div class="opt-buttons" id="optTemp">
@@ -74,6 +83,7 @@
           </div>
         </div>
 
+        <!-- 당도 -->
         <div class="opt-group">
           <div class="opt-title">당도</div>
           <div class="opt-buttons" id="optSugar">
@@ -85,6 +95,7 @@
           </div>
         </div>
 
+        <!-- 얼음 -->
         <div class="opt-group">
           <div class="opt-title">얼음량</div>
           <div class="opt-buttons" id="optIce">
@@ -95,6 +106,7 @@
           </div>
         </div>
 
+        <!-- 토핑 -->
         <div class="opt-group">
           <div class="opt-title">토핑</div>
           <div class="opt-buttons" id="optTopping">
@@ -105,6 +117,7 @@
           </div>
         </div>
 
+        <!-- 버튼 -->
         <div class="modal-buttons">
           <button id="btnCancel">취소</button>
           <button id="btnAddCart">장바구니 담기</button>
@@ -116,9 +129,8 @@
 
   </div> <!-- kiosk 끝 -->
 
-</div> <!-- phone-frame 끝 -->
+</div>
 
 <script src="kio.js"></script>
-
 </body>
 </html>

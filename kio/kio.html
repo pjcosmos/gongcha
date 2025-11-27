@@ -63,5 +63,76 @@
 </div>
 
 <script src="kio.js"></script>
+
+<!-- ===========================
+        옵션 선택 팝업
+=========================== -->
+<div id="optionModal" class="modal">
+  <div class="modal-content">
+
+    <h2 id="optMenuName">메뉴 이름</h2>
+    <h3 id="optMenuPrice">0원</h3>
+
+    <!-- 컵 선택 -->
+    <div class="opt-group">
+      <div class="opt-title">컵 종류</div>
+      <div class="opt-buttons" id="optCup">
+        <button data-value="일회용컵">일회용컵</button>
+        <button data-value="개인컵">개인컵</button>
+      </div>
+    </div>
+
+    <!-- 온도 선택 -->
+    <div class="opt-group">
+      <div class="opt-title">온도</div>
+      <div class="opt-buttons" id="optTemp">
+        <button data-value="COLD">COLD</button>
+        <button data-value="HOT">HOT</button>
+      </div>
+    </div>
+
+    <!-- 당도 -->
+    <div class="opt-group">
+      <div class="opt-title">당도</div>
+      <div class="opt-buttons" id="optSugar">
+        <button data-value="0%">0%</button>
+        <button data-value="30%">30%</button>
+        <button data-value="50%">50%</button>
+        <button data-value="70%">70%</button>
+        <button data-value="100%">100%</button>
+      </div>
+    </div>
+
+    <!-- 얼음량 -->
+    <div class="opt-group">
+      <div class="opt-title">얼음량</div>
+      <div class="opt-buttons" id="optIce">
+        <button data-value="없음">없음</button>
+        <button data-value="적게">적게</button>
+        <button data-value="보통">보통</button>
+        <button data-value="많이">많이</button>
+      </div>
+    </div>
+
+    <!-- 토핑 선택 -->
+    <div class="opt-group">
+      <div class="opt-title">토핑</div>
+      <div class="opt-buttons" id="optTopping">
+        <button data-value="펄">펄</button>
+        <button data-value="코코넛">코코넛</button>
+        <button data-value="화이트펄">화이트펄</button>
+        <button data-value="치즈폼">치즈폼</button>
+      </div>
+    </div>
+
+    <!-- 버튼 -->
+    <div class="modal-buttons">
+      <button id="btnCancel">취소</button>
+      <button id="btnAddCart">장바구니 담기</button>
+    </div>
+
+  </div>
+</div>
+  
 </body>
 </html>

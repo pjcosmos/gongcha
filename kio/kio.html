@@ -120,98 +120,73 @@
     </div>
   </div>
 
-
-  <!-- ======================
-       결제 팝업 (옵션 팝업 밖!)
-  ======================= -->
-  <div id="payModal" class="pay-modal">
-    <div class="pay-box">
-
-      <h2>결제 방식을 선택해주세요</h2>
-
-      <div class="pay-option">
-        <button data-pay="카드결제">카드 결제</button>
-        <button data-pay="삼성페이">삼성페이</button>
-        <button data-pay="간편결제">간편결제</button>
-        <button data-pay="현금결제">현금 결제</button>
-      </div>
-
-      <div style="margin-top:20px;">
-        <button id="payCloseBtn" class="close-btn">닫기</button>
-      </div>
-
-    </div>
-  </div>
-
     <!-- ======================
-     ① 주문 내역 확인 화면
+     주문확인 모달
 ====================== -->
-<div id="confirmScreen" class="confirm-screen">
+<div id="confirmModal" class="modal">
+  <div class="modal-content confirm-box">
 
-  <h2 class="confirm-title">주문 내역 확인</h2>
-  <p class="confirm-sub">주문 정보를 확인해 주세요.</p>
+    <h2 class="confirm-title">주문 내역 확인</h2>
+    <p class="confirm-sub">주문 정보를 확인해 주세요.</p>
 
-  <table class="confirm-table">
-    <thead>
-      <tr>
-        <th>상품명</th>
-        <th>수량</th>
-        <th>가격</th>
-      </tr>
-    </thead>
-    <tbody id="confirmTableBody"></tbody>
-  </table>
+    <table class="confirm-table">
+      <thead>
+        <tr>
+          <th>상품명</th>
+          <th>수량</th>
+          <th>가격</th>
+        </tr>
+      </thead>
+      <tbody id="confirmTableBody"></tbody>
+    </table>
 
-  <div class="confirm-total-box">
-    총 수량 <span id="confirmTotalCount">0</span>개
-    &nbsp;&nbsp;|&nbsp;&nbsp;
-    주문금액 <span id="confirmTotalPrice">0원</span>
+    <div class="confirm-total">
+      <div>총 수량 <span id="confirmCount">0개</span></div>
+      <div>주문 금액 <span id="confirmPrice">0원</span></div>
+    </div>
+
+    <div class="modal-buttons">
+      <button id="confirmPrev">이전 단계</button>
+      <button id="confirmNext">다음 단계</button>
+    </div>
+
   </div>
-
-  <div class="confirm-buttons">
-    <button id="confirmPrev" class="btn-gray">이전 단계</button>
-    <button id="confirmNext" class="btn-red">다음 단계</button>
-  </div>
-
 </div>
 
 
 <!-- ======================
-     ② 결제 화면
+     결제 모달
 ====================== -->
-<div id="payScreen" class="pay-screen">
+<div id="payModal2" class="modal">
+  <div class="modal-content pay-box2">
 
-  <h2 class="pay-title">결제하기</h2>
+    <h2 class="pay-title">결제하기</h2>
 
-  <div class="pay-section">
-    <h3>멤버십/모바일 교환권</h3>
-    <div class="pay-method-box">
+    <h3 class="pay-section-title">멤버십 / 모바일 교환권</h3>
+    <div class="pay-option">
       <button>공차 카드</button>
       <button>멤버십 쿠폰</button>
       <button>모바일 교환권</button>
     </div>
-  </div>
 
-  <div class="pay-section">
-    <h3>결제 방법</h3>
-    <div class="pay-method-box">
-      <button data-pay="카드결제">신용 카드</button>
-      <button data-pay="카카오페이">카카오페이</button>
-      <button data-pay="삼성페이">삼성페이</button>
-      <button data-pay="현금">현금 결제</button>
+    <h3 class="pay-section-title" style="margin-top:25px;">결제 방법</h3>
+    <div class="pay-option">
+      <button>신용카드</button>
+      <button>카카오페이</button>
+      <button>삼성페이</button>
+      <button>현금 결제</button>
     </div>
-  </div>
 
-  <div class="pay-total">
-    총 결제 금액 <b id="payFinalPrice">0원</b>
-  </div>
+    <div class="confirm-total" style="margin-top:25px;">
+      총 결제 금액 <span id="payTotal">0원</span>
+    </div>
 
-  <div class="confirm-buttons">
-    <button id="payPrev" class="btn-gray">이전 단계</button>
-  </div>
+    <div class="modal-buttons">
+      <button id="payPrev">이전 단계</button>
+    </div>
 
+  </div>
 </div>
-
   </div> <!-- kiosk 끝 -->
 
 </div> <!-- phone-frame 끝 -->

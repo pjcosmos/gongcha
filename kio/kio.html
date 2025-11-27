@@ -10,7 +10,6 @@
 
   <!-- 스마트폰 프레임 -->
   <div class="phone-wrapper">
-
     <!-- 축소된 키오스크 전체 -->
     <div class="kiosk">
 
@@ -22,44 +21,63 @@
 
       <!-- 카테고리 탭 -->
       <div class="category-bar">
-        <button>펄&밀크폼</button>
-        <button>NEW&EVENT</button>
-        <button>베스트셀러</button>
-        <button>밀크티</button>
-        <button>스무디</button>
-        <button>요거트/비티</button>
-        <button>프롯티&오이</button>
-        <button>베이커리&스낵</button>
-        <button>병음료/MD상품</button>
-        <button>세트메뉴</button>
-        <button>오더제한 메뉴</button>
+        <!-- FELIX PICK 제거, 순서만 맞춰서 버튼 생성 -->
+        <button class="category-btn active" data-cat="new">NEW&EVENT</button>
+        <button class="category-btn" data-cat="best">베스트셀러</button>
+        <button class="category-btn" data-cat="milktea">밀크티</button>
+        <button class="category-btn" data-cat="smoothie">스무디</button>
+        <button class="category-btn" data-cat="original">오리지널티</button>
+        <button class="category-btn" data-cat="fruit">프룻티&모어</button>
+        <button class="category-btn" data-cat="coffee">커피</button>
+        <button class="category-btn" data-cat="bakery">베이커리&스낵</button>
+        <button class="category-btn" data-cat="bottle">병음료/MD상품</button>
+        <button class="category-btn" data-cat="set">세트메뉴</button>
+        <button class="category-btn" data-cat="limit">오더제한 메뉴</button>
       </div>
 
       <!-- 메인 컨텐츠 -->
       <div class="content">
 
-        <!-- 메뉴 3열 그리드 -->
-        <div class="menu-grid">
+        <!-- 메뉴 4열 그리드 -->
+        <div class="menu-grid" id="menu-grid">
 
-          <!-- 반복되는 메뉴들 -->
-          <!-- 1~17 -->
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu01.png"><div class="menu-name">오리지널 밀크티 + 펄</div><div class="menu-price">6,800원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu02.png"><div class="menu-name">마블 밀크티 + 펄</div><div class="menu-price">7,000원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu03.png"><div class="menu-name">오리지널 밀크티 + 흑당펄</div><div class="menu-price">7,000원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu04.png"><div class="menu-name">마블 밀크티 + 흑당펄 더블펄</div><div class="menu-price">7,200원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu05.png"><div class="menu-name">오리지널 밀크티 + 흑당펄</div><div class="menu-price">6,800원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu06.png"><div class="menu-name">마블 밀크티 + 초코크런치 펄</div><div class="menu-price">7,000원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu07.png"><div class="menu-name">오리지널 밀크티 + 타로펄</div><div class="menu-price">7,000원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu08.png"><div class="menu-name">마블 밀크티 + 타로펄</div><div class="menu-price">7,200원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu09.png"><div class="menu-name">오리지널 밀크티 + 바닐라 펄</div><div class="menu-price">7,800원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu10.png"><div class="menu-name">마블 밀크티 + 바닐라 펄</div><div class="menu-price">8,000원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu11.png"><div class="menu-name">오리지널 밀크티 + 딸기펄</div><div class="menu-price">7,600원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu12.png"><div class="menu-name">마블 밀크티 + 딸기펄</div><div class="menu-price">8,000원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu13.png"><div class="menu-name">오리지널 밀크티 + 딸기쿠키 펄</div><div class="menu-price">8,200원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu14.png"><div class="menu-name">오리지널 밀크티 + 타로쿠키 펄</div><div class="menu-price">8,200원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu15.png"><div class="menu-name">오리지널 밀크티 + 망고쿠키 펄</div><div class="menu-price">8,400원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu16.png"><div class="menu-name">오리지널 밀크티 + 청포도 쿠키펄</div><div class="menu-price">7,300원</div></div>
-          <div class="menu-card"><div class="menu-tag">NEW</div><img src="img/menu17.png"><div class="menu-name">마블 밀크티 + 마라쿠자 쿠키펄</div><div class="menu-price">7,500원</div></div>
+          <!-- ===== 예시 메뉴 몇 개만 넣어둠 ===== -->
+          <!-- 카테고리별로 data-cat 만 바꾸면서 복사해서 쓰면 됨 -->
+
+          <!-- NEW & EVENT 예시 -->
+          <div class="menu-card" data-cat="new">
+            <div class="menu-name">로얄 밀크티 팥빙수 쉐이크</div>
+            <div class="menu-price">6,900원</div>
+          </div>
+
+          <div class="menu-card" data-cat="new">
+            <div class="menu-name">말차 팥빙수 쉐이크</div>
+            <div class="menu-price">6,900원</div>
+          </div>
+
+          <!-- 밀크티 예시 -->
+          <div class="menu-card" data-cat="milktea">
+            <div class="menu-name">블랙 밀크티</div>
+            <div class="menu-price">4,500원</div>
+          </div>
+
+          <div class="menu-card" data-cat="milktea">
+            <div class="menu-name">타로 밀크티</div>
+            <div class="menu-price">4,500원</div>
+          </div>
+
+          <!-- 스무디 예시 -->
+          <div class="menu-card" data-cat="smoothie">
+            <div class="menu-name">딸기 쿠키 스무디</div>
+            <div class="menu-price">5,700원</div>
+          </div>
+
+          <div class="menu-card" data-cat="smoothie">
+            <div class="menu-name">청귤 요거티 크러쉬</div>
+            <div class="menu-price">6,000원</div>
+          </div>
+
+          <!-- 필요하면 여기서부터 네이버 블로그 메뉴를 카테고리별로 쭉 추가 -->
 
         </div>
 
@@ -68,11 +86,16 @@
           <h3>🛒 장바구니</h3>
           <button class="delete-all">전체삭제</button>
           <div class="cart-list">
-            <div class="slot"></div><div class="slot"></div><div class="slot"></div>
-            <div class="slot"></div><div class="slot"></div><div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
           </div>
           <div class="cart-bottom">
-            <div>0개</div><div>0원</div>
+            <div>0개</div>
+            <div>0원</div>
           </div>
         </aside>
 
@@ -87,6 +110,37 @@
 
     </div>
   </div>
+
+  <!-- 카테고리 필터 JS (심플 버전) -->
+  <script>
+    const catButtons = document.querySelectorAll('.category-btn');
+    const cards = document.querySelectorAll('.menu-card');
+
+    function filterMenu(cat) {
+      cards.forEach(card => {
+        const cardCat = card.dataset.cat;
+        if (cat === 'all') {
+          card.style.display = 'block';
+        } else {
+          card.style.display = (cardCat === cat) ? 'block' : 'none';
+        }
+      });
+    }
+
+    catButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // active 버튼 표시
+        catButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const cat = btn.dataset.cat;
+        filterMenu(cat);
+      });
+    });
+
+    // 초기: NEW&EVENT만 보이게
+    filterMenu('new');
+  </script>
 
 </body>
 </html>

@@ -387,112 +387,69 @@ cursor: pointer;
 .pay-cancel { background: #ccc; }
 .pay-confirm { background: #ff8c69; color: white; }
 
-/* 전체 화면 스타일 */
-.confirm-screen,
-.pay-screen {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: white;
-  z-index: 999;
-  display: none;
-  padding: 20px;
-  box-sizing: border-box;
+/* ===========================
+   주문확인 & 결제 모달
+=========================== */
+
+.confirm-box, .pay-box2 {
+  width: 85%;
+  max-width: 360px;
+  text-align: center;
 }
 
-/* 제목 */
-.confirm-title,
-.pay-title {  
-  text-align: center;
-  font-size: 26px;
+.confirm-title, .pay-title {
+  font-size: 24px;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
 .confirm-sub {
-  text-align: center;
-  font-size: 18px;
-  margin-bottom: 25px;
+  font-size: 16px;
+  margin-bottom: 15px;
 }
 
-/* 표 */
 .confirm-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
-  font-size: 18px;
+  font-size: 15px;
+  margin-bottom: 15px;
 }
 
-.confirm-table th,
+.confirm-table th {
+  background: #f5f5f5;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
 .confirm-table td {
-  border-bottom: 1px solid #ddd;
-  padding: 12px 5px;
-  text-align: center;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
 }
 
-/* 옵션 표기 */
-.confirm-option {
-  color: #555;
-  font-size: 14px;
-}
-
-/* 총 금액 */
-.confirm-total-box {
-  font-size: 20px;
-  text-align: center;
+.confirm-total {
+  font-size: 18px;
+  font-weight: 700;
   margin-top: 10px;
-  margin-bottom: 35px;
-  font-weight: 600;
+  line-height: 1.7;
 }
 
-/* 버튼들 */
-.confirm-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.btn-gray {
-  flex: 1;
-  background: #ccc;
-  padding: 15px;
-  border-radius: 12px;
-  border: none;
+.pay-section-title {
   font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 8px;
 }
 
-.btn-red {
-  flex: 1;
-  background: #c9282d;
-  color: white;
-  padding: 15px;
-  border-radius: 12px;
-  border: none;
-  font-size: 18px;
-}
-
-/* 결제 화면 영역 */
-.pay-section {
-  margin-bottom: 25px;
-}
-
-.pay-method-box {
+.pay-option {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 8px;
 }
 
-.pay-method-box button {
-  padding: 15px;
-  font-size: 18px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
+.pay-option button {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #bbb;
   background: #fafafa;
-}
-
-.pay-total {
-  text-align: center;
-  font-size: 22px;
-  margin-top: 30px;
-  font-weight: 700;
+  font-size: 16px;
 }
